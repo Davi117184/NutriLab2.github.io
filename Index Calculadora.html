@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora imc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/Logo Definitiva Dark.png" alt="logo">
+                <h3>Nutri Lab</h3>
+            </div>
+            <div class="links">
+                <ul>
+                    <li><a href="Index Sobre.html">Sobre</a></li>
+                    <li><a href="Index Receitas.html">Receitas</a></li>
+                    <li><a href="#">Calculadora imc</a></li>
+                    <li><a href="https://nutrilab3.flutterflow.app/">App Flutter Flow</a></li>
+                </ul>
+                <a href="Index Formulario.html" class="btn">Cadastro</a>
+            </div>
+        </div>
+    </header>
+
+
+ <main id="container">
+    <section id="img">
+        <img src="assets/undraw_personal_trainer_re_cnua.svg">
+    </section>
+
+   <section id="calculator">
+    <form id="form">
+        <h1 id="title">
+            Calculadora - IMC
+        </h1>
+          <div class="input-box">
+            <label for="weight">
+                Peso (Kg):
+            </label>
+            <div class="input-field">
+                <i class="fa-solid fa-weight-hanging"></i>
+                <input type="number" id="weight" required>
+                <span>
+                    (Kg):
+                </span>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label for="height">
+                Altura (M):
+            </label>
+            <div class="input-field">
+                <i class="fa-solid fa-ruler"></i>
+                <input type="name" step="0.01" id="height" required>
+                <span>
+                    (M):
+                </span>
+            </div>
+          </div>
+
+            <button id="calculate" type="submit">
+                    Calcular
+            </button>
+           </form>
+            <div id="infos" class="hidden">
+
+            <div id="result">
+            <div id="bmi">
+            <span id="value"></span>
+            <span>Seu IMC é:</span>
+            </div>
+            <div id="description"s>
+                <span></span>
+            </div>
+            </div>
+   </section>
+ </main>
+
+ <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #0c0a0a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #14f505;
+        }
+
+        .big-wrapper {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #0c0a0a;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 90px;
+            margin-right: 0.6rem;
+        }
+
+        .logo h3 {
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            margin-left: 2rem; /* Ajuste a distância entre logo e links */
+        }
+
+        .links ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .links li {
+            margin-left: 1.5rem; /* Ajuste a distância entre os links */
+            display: flex;
+            align-items: center;
+        }
+
+        .links a {
+            color: #14f505;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .9rem 1.9rem;
+            color: #0c0a0a !important;
+            background-color: #14f505;
+            border-radius: 16px;
+            text-transform: capitalize;
+            transition: .3s;
+            margin-left: 2rem; /* Separação entre os links e o botão */
+        }
+
+        .btn:hover {
+            background-color: #0c0a0a;
+            color: #14f505 !important;
+            border: 1px solid #14f505;
+            transform: scale(1.05);
+        }
+
+        .shape {
+            position: absolute;
+            width: 500px;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            opacity: 1.0;
+        }
+ 
+      #container {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+      }      
+     #img img{
+        width: 26rem;
+     }
+     #calculator {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        border-radius: 8px;
+     }
+
+     #form {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+     }
+     #title {
+        font-size: 2.25rem;
+     }
+     #title::after {
+
+         position: absolute;
+         content: '';
+         width: 8rem;
+         height: 3px;
+         bottom: 0;
+         left: 0;
+         border-radius: 3px;
+     }
+     .input-box label {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #14f505;
+     }
+     .input-field {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.3rem;
+        border-radius: 3px;
+        margin-top: 3px;
+     }
+     .input-field span,
+     .input-field i {
+        color: #14f505;
+        font-size: 1.3rem;
+        padding: 0.6rem 1rem;
+     }
+
+    .input-field input {
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        font-size: 1.3rem;
+        color: #14f505;
+        padding: 0 0.5rem;
+    }
+
+    .input-field input::-webkit-outer-spin-button,
+    .input-field input::-webkit-inner-spin-button {
+        appearance: none;
+    }
+
+.input-field input:focus {
+    outline: none;
+}
+
+#calculate {
+
+
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #14f505;
+    color: #0c0a0a;
+    padding: 0.5rem 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#result {
+
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    border-top: 1px solid #14f505;
+    padding: 0.75rem 0;
+}
+
+
+#bmi {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2.25rem;
+}
+
+#bmi span:last-child {
+    font-size: 0.875rem;
+    color: #14f505;
+}
+
+#description {
+
+    width: 15.5rem;
+}
+ </style>
+
+
+<script>
+const form = document.getElementById('form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    const bmi = (weight / (height * height)).toFixed(2);
+
+    if (!isNaN(bmi)) {
+        const value = document.getElementById('value');
+        let description = '';
+
+        value.classList.add('attention');
+        document.getElementById('infos').classList.remove('hidden');
+
+        if (bmi < 18.5){
+            description = 'Cuidado! Você está abaixo do peso!';
+        } 
+        else if (bmi >= 18.5 && bmi <= 25) {
+            description = "Você está no peso ideal!";
+            value.classList.remove('attention');
+            value.classList.add('normal');
+        }
+        else if (bmi > 25 && bmi <= 30) {
+            description = "Cuidado! Você está com sobrepeso!";
+        }
+        else if (bmi > 30 && bmi <= 35) {
+            description = "Cuidado! Você está com obesidade moderada!";
+        }
+        else if (bmi > 35 && bmi <= 40) {
+            description = "Cuidado! Você está com obesidade severa!";
+        }
+        else {
+            description = "Cuidado! Você está com obesidade morbida!";
+        }
+
+        value.textContent = bmi;
+        document.getElementById('description').textContent = description;
+    }
+});
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
